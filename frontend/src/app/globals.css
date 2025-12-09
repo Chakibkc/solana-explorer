@@ -1,0 +1,145 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 267 84% 65%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 173 80% 45%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 163 94% 49%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 267 84% 65%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-solana-green via-solana-blue to-solana-purple bg-clip-text text-transparent;
+  }
+  
+  .bg-glass {
+    @apply bg-white/5 backdrop-blur-md border border-white/10;
+  }
+  
+  .bg-card-gradient {
+    @apply bg-gradient-to-br from-[#1a1b23] to-[#16171d];
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-track {
+    @apply bg-muted/20;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    @apply bg-muted rounded-full;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground;
+  }
+}
+
+/* Chart candlestick pattern background */
+.chart-pattern {
+  background-image: 
+    linear-gradient(90deg, rgba(153, 69, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(rgba(153, 69, 255, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Animated gradient */
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animated-gradient {
+  background: linear-gradient(135deg, #9945FF, #14F195, #00D4AA, #9945FF);
+  background-size: 300% 300%;
+  animation: gradient-shift 8s ease infinite;
+}
+
+/* Glow effects */
+.glow-purple {
+  box-shadow: 0 0 20px rgba(153, 69, 255, 0.3);
+}
+
+.glow-green {
+  box-shadow: 0 0 20px rgba(20, 241, 149, 0.3);
+}
+
+.glow-blue {
+  box-shadow: 0 0 20px rgba(0, 212, 170, 0.3);
+}
+
+/* Skeleton loader */
+@keyframes skeleton-loading {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+.skeleton {
+  background-color: #1a1b23;
+  background-image: linear-gradient(
+    90deg,
+    #1a1b23 0px,
+    rgba(153, 69, 255, 0.1) 40px,
+    #1a1b23 80px
+  );
+  background-size: 200px 100%;
+  background-repeat: no-repeat;
+  animation: skeleton-loading 1.5s infinite;
+}
+
+/* Responsive text sizing */
+@media (max-width: 640px) {
+  .responsive-text-lg {
+    @apply text-base;
+  }
+  .responsive-text-xl {
+    @apply text-lg;
+  }
+  .responsive-text-2xl {
+    @apply text-xl;
+  }
+  .responsive-text-3xl {
+    @apply text-2xl;
+  }
+}
