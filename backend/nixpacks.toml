@@ -1,8 +1,12 @@
 [phases.setup]
 nixPkgs = ["rustc", "cargo", "pkg-config", "openssl"]
+aptPkgs = ["libssl-dev"]
 
 [phases.build]
 cmds = ["cargo build --release"]
 
 [start]
 cmd = "./target/release/solana-explorer-backend"
+
+[variables]
+CARGO_HOME = "/root/.cargo"
